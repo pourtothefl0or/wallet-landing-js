@@ -1,0 +1,35 @@
+// === VENDOR ===
+@import './vendor/normalize';
+
+// === MIXINS ===
+@import './mixins/font-face';
+@import './mixins/breakpoints';
+
+// === BASE ===
+@import './global/variables';
+@import './global/root';
+@import './global/fonts';
+@import './global/global';
+
+// === COMPONENTS ===
+@import './components/container';
+@import './components/logo';
+@import './components/typography';
+@import './components/btn';
+@import './components/btn-menu';
+@import './components/form-field';
+@import './components/custom-radio';
+@import './components/custom-checkbox';
+
+// === BLOCKS ===
+@import './blocks/header';
+@import './blocks/hero';
+@import './blocks/apps';
+@import './blocks/coins';
+@import './blocks/blog';
+@import './blocks/location';
+@import './blocks/contacts';
+@import './blocks/questions';
+@import './blocks/accordion';
+@import './blocks/offer';
+@import './blocks/footer';

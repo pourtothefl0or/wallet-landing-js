@@ -1,0 +1,25 @@
+<!-- === BUTTON === -->
+@@if (type === 'button' && view === '') {
+  <button class="btn" type="submit">@@text</button>
+}
+
+@@if (type === 'button' && view !== '' && view !== 'arrow') {
+  <button class="btn btn--@@view" type="submit">@@text</button>
+}
+
+@@if (type === 'button' && view === 'arrow') {
+  <button class="btn btn--arrow">
+    @@text
+    <svg>
+      <use xlink:href="./images/sprite.svg#btn-arrow"></use>
+    </svg>
+  </button>
+}
+
+@@if (type === 'link' && view === '') {
+  <a class="btn" href="#">@@text</a>
+}
+
+@@if (type === 'link' && view !== '') {
+  <a class="btn btn--@@view" href="#">@@text</a>
+}

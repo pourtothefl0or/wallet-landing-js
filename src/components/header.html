@@ -1,0 +1,41 @@
+<!-- === HEADER === -->
+<header class="header">
+  <div class="header__container container">
+    <a href="#" class="logo">
+      <img class="logo__image" src="./images/logo.svg" alt="Wallet logo">
+    </a>
+    <nav class="header__nav">
+      <button class="btn-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="header-menu">
+        <li class="header-menu__item">
+          <a href="#" class="header-menu__link">Home</a>
+        </li>
+        <li class="header-menu__item">
+          <a href="#" class="header-menu__link">Blog</a>
+        </li>
+        <li class="header-menu__item">
+          <a href="#" class="header-menu__link">FAQ</a>
+        </li>
+        <li class="header-menu__item">
+          <a href="#" class="header-menu__link">Security</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__btns">
+      @@include('btn.html', {
+        'type': 'button',
+        'view': 'tertiary',
+        'text': 'Log In'
+      })
+      @@include('btn.html', {
+        'type': 'button',
+        'view': 'secondary',
+        'text': 'Sign Up'
+      })
+    </div>
+  </div>
+</header>
