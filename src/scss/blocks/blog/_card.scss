@@ -15,6 +15,7 @@
 
     img {
       @include image-cover(first);
+      transition: transform var(--primary-animation);
     }
   }
 
@@ -69,6 +70,17 @@
   // .card__descr
   &__descr {
     display: none;
+  }
+
+  // >>> .card:focus
+  // >>> .card:hover
+  &:focus,
+  &:hover {
+    .card__image {
+      img {
+        transform: scale(1.2);
+      }
+    }
   }
 
   // --- MEDIA ---

@@ -54,7 +54,9 @@
       transition: fill var(--primary-animation);
     }
 
+    // >>> .footer-social__link:focus
     // >>> .footer-social__link:hover
+    &:focus,
     &:hover {
       svg {
         fill: $color-white;

@@ -78,6 +78,12 @@
     &:focus {
       ~ .custom-radio__item {
         border-color: $color-ebony-clay;
+
+        // .custom-radio__item::before
+        &::before {
+          opacity: 0.2;
+          visibility: visible;
+        }
       }
     }
 

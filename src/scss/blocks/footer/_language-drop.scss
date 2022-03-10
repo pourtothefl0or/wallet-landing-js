@@ -23,7 +23,9 @@
     color: $color-iron;
   }
 
+  // >>> .language-drop:focus
   // >>> .language-drop:hover
+  &:focus,
   &:not(:disabled):hover {
     border-color: $color-white;
   }

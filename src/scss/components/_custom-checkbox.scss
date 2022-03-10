@@ -57,7 +57,9 @@
         color var(--primary-animation),
         text-decoration-color var(--primary-animation);
 
-      /// a:hover
+      // >>> a:focus
+      // >>> a:hover
+      &:focus,
       &:hover {
         color: $color-governor-bay;
       }
@@ -93,6 +95,19 @@
     &:focus {
       ~ .custom-checkbox__item {
         border-color: $color-governor-bay;
+      }
+    }
+
+    // >>> .custom-checkbox__input:focus:checked
+    &:focus:checked {
+      ~ .custom-checkbox__item {
+        border-color: $color-governor-bay;
+
+        // .custom-checkbox__item::before
+        &::before {
+          opacity: 0.2;
+          visibility: visible;
+        }
       }
     }
 

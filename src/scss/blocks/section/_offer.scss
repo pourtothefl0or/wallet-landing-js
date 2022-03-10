@@ -37,9 +37,13 @@
   }
 
   // --- MEDIA ---
+  @include tablet(max) {
+    padding: 24px 23px 26px;
+  }
+
+  // --- MEDIA ---
   @include minitablet(max) {
     border-radius: 0;
-    padding: 24px 23px 26px;
 
     // .offer__image
     &__image {

@@ -40,7 +40,9 @@
       transition: fill var(--primary-animation);
     }
 
+    // >>> .footer-follow__link:focus
     // >>> .footer-follow__link:hover
+    &:focus,
     &:hover {
       background-color: $color-white;
 

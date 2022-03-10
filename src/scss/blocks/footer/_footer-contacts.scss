@@ -31,7 +31,9 @@
       background-image: url("../images/icons/tel.svg");
     }
 
+    // >>> .footer-contacts__link:focus
     // >>> .footer-contacts__link:hover
+    &:focus,
     &:hover {
       color: $color-white;
     }
