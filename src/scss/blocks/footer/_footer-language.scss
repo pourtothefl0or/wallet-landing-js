@@ -1,5 +1,11 @@
 // === FOOTER-LANGUAGE ===
 .footer-language {
+  // --- MEDIA ---
+  @include tablet(max) {
+    order: 1;
+  }
+
+  // --- MEDIA ---
   @include tablet(min) {
     grid-area: language;
     grid-column: 9 / 11;

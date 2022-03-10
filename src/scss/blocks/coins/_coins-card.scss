@@ -1,15 +1,20 @@
 // === COINS-CARD ===
 .coins-card {
-  display: flex;
+  --coins-card-image: 30px;
+
+  display: grid;
+  grid-template-columns: var(--coins-card-image) auto 1fr;
   align-items: center;
   gap: 8px;
+  border-radius: var(--secondary-radius);
+  padding: 10px 5px;
+  transition: background-color var(--primary-animation);
 
   // .coins-card__image
   &__image {
     width: var(--coins-card-image);
     height: var(--coins-card-image);
     object-fit: cover;
-    transition: transform var(--primary-animation);
   }
 
   // .coins-card__abbr
@@ -37,30 +42,22 @@
   // >>> .coins-card:focus
   &:hover,
   &:focus {
-    .coins-card__image {
-      transform: rotate(360deg);
-    }
-
-    .coins-card__abbr,
-    .coins-card__name {
-      color: $color-governor-bay;
-    }
+    background-color: $color-wild-sand;
   }
 
-  // MEDIA
-  @include minitablet(max) {
-    display: grid;
+  // --- MEDIA ---
+  @include tablet(max) {
+    --coins-card-image: 40px;
+
     grid-template-columns: var(--coins-card-image) 1fr;
     grid-template-areas:
       "image abbr"
       "image name";
-    gap: 0 8px;
+    row-gap: 0;
 
     // .coins-card__image
     &__image {
       grid-area: image;
-      width: var(--coins-card-image);
-      height: var(--coins-card-image);
     }
 
     // .coins-card__abbr

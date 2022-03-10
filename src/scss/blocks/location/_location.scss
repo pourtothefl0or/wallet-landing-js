@@ -25,7 +25,23 @@
     margin: 0 0 40px;
   }
 
-  // MEDIA
+  // .location__list
+  &__list {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  // .location__item
+  &__item {
+    // .location__item:not(:last-child)
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  // --- MEDIA ---
   @include minitablet(max) {
     display: flex;
     flex-direction: column-reverse;
@@ -41,14 +57,14 @@
 
     // .location__container
     &__container {
-      padding: 20px 35px 18px;
+      padding: 65px 35px 18px;
       width: 100%;
     }
 
     // .location__title
     &__title {
       margin-bottom: 24px;
-      transform: translateX(-10px);
     }
   }
 }
+

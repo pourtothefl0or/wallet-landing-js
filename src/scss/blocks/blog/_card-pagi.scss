@@ -1,0 +1,31 @@
+// === CARD-PAGI ===
+.card-pagi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4px;
+
+  // .card-pagi__item
+  &__item {
+    display: inline-block;
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+    background-color: $color-mercury-solid;
+    cursor: pointer;
+    transition:
+      background-color var(--primary-animation),
+      opacity var(--primary-animation);
+
+    // >>> .card-pagi__item--active
+    &--active {
+      background-color: $color-governor-bay;
+    }
+
+    // >>> .card-pagi__item:hover
+    &:hover {
+      background-color: $color-governor-bay;
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,5 +1,5 @@
-// === DROPDOWN-LANGUAGE ===
-.dropdown-language {
+// === LANGUAGE-DROP ===
+.language-drop {
   border: 1px solid transparent;
   border-radius: var(--primary-radius);
   padding: 6px 15px;
@@ -18,12 +18,12 @@
     color var(--primary-animation),
     border-color var(--primary-animation);
 
-  // >>> .dropdown-language:disabled
+  // >>> .language-drop:disabled
   &:disabled {
     color: $color-iron;
   }
 
-  // >>> .dropdown-language:hover
+  // >>> .language-drop:hover
   &:not(:disabled):hover {
     border-color: $color-white;
   }

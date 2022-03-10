@@ -1,25 +1,18 @@
-// === OFFER ===
-.offer {
+// === SECTION ===
+.section {
   background-color: $color-white;
 
-  // .offer__container
+  // .section__container
   &__container {
     padding-top: 25px;
     padding-bottom: 103px;
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include minitablet(max) {
-    // .offer__container
+    // .section__container
     &__container {
       padding: 0 0 60px;
-    }
-  }
-
-  // MEDIA
-  @include mobile(max) {
-    .btn {
-      align-self: center;
     }
   }
 }

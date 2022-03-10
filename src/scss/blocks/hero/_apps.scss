@@ -1,0 +1,32 @@
+// === APPS ===
+.apps {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+
+  // .apps__link
+  &__link {
+    display: block;
+    transition: transform var(--primary-animation);
+
+    // >>> .apps__link:hover
+    // >>> .apps__link:focus
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+  }
+
+  // .apps__image
+  &__image {
+    width: 140px;
+    height: 42px;
+    object-fit: cover;
+  }
+
+  // --- MEDIA ---
+  @include minitablet(max) {
+    gap: 25px;
+  }
+}

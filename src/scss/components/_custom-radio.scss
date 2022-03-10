@@ -1,5 +1,7 @@
 // === CUSTOM-RADIO ===
 .custom-radio {
+  --size: 24px;
+
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -12,9 +14,10 @@
     display: block;
     border: 1px solid $color-governor-bay;
     border-radius: 100%;
-    width: 24px;
-    height: 24px;
+    width: var(--size);
+    height: var(--size);
     transform: translateY(-50%);
+    transition: border-color var(--primary-animation);
 
     // .custom-radio__item::before
     &::before {
@@ -27,36 +30,11 @@
       height: 20px;
       transform: translate(-50%, -50%);
       background-image: url("../images/icons/radio-checked.svg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0;
-      visibility: hidden;
+      @include image-cover(second);
+      @include visibility(hidden);
       transition:
         opacity var(--primary-animation),
         visibility var(--primary-animation);
-
-      // >>> .custom-radio__input:focus .custom-radio__item::before
-      .custom-radio__input:focus ~ & {
-        animation: radio-focus 1.5s ease-in-out infinite;
-      }
-
-      // >>> .custom-radio__input:checked .custom-radio__item::before
-      .custom-radio__input:checked ~ & {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      // >>> .custom-radio__input:hover .custom-radio__item::before
-      .custom-radio__input:not(:disabled):hover ~ & {
-        opacity: 0.2;
-        visibility: visible;
-      }
-    }
-
-    // .custom-radio__input:disabled .custom-radio__item
-    .custom-radio__input:disabled ~ & {
-      border-color: $color-iron;
     }
   }
 
@@ -69,38 +47,68 @@
     line-height: 22px;
     color: $color-ebony-clay;
     transition: color var(--primary-animation);
-
-    // >>> .custom-radio__input:disabled .custom-radio__value
-    .custom-radio__input:disabled ~ & {
-      color: $color-iron;
-    }
-
-    // >>> .custom-radio__input:focus .custom-radio__value
-    // >>> .custom-radio__input:hover .custom-radio__value
-    .custom-radio__input:focus ~ &,
-    .custom-radio__input:not(:disabled):hover ~ & {
-      color: $color-governor-bay;
-    }
   }
 
-  // ANIMATION
-  @keyframes radio-focus {
-    0% {
-      width: 20px;
-      height: 20px;
-      background-size: 20px;
+  // .custom-radio__input
+  &__input {
+    // .custom-radio__input:disabled
+    &:disabled {
+      ~ .custom-radio__item {
+        border-color: $color-iron;
+      }
+
+      ~ .custom-radio__value {
+        color: $color-iron;
+      }
     }
 
-    50% {
-      width: calc(20px / 1.5);
-      height: calc(20px / 1.5);
-      background-size: calc(20px / 1.5);
+    // .custom-radio__input:checked
+    &:checked {
+      ~ .custom-radio__item {
+        border-color: $color-ebony-clay;
+
+        // .custom-radio__item::before
+        &::before {
+          @include visibility(visible);
+        }
+      }
     }
 
-    100% {
-      width: 20px;
-      height: 20px;
-      background-size: 20px;
+    // .custom-radio__input:focus
+    &:focus {
+      ~ .custom-radio__item {
+        border-color: $color-ebony-clay;
+      }
+    }
+
+    // .custom-radio__input:not(:disabled):hover
+    &:not(:disabled):hover {
+      ~ .custom-radio__item {
+        border-color: $color-ebony-clay;
+
+        // .custom-radio__item::before
+        &::before {
+          opacity: 0.2;
+          visibility: visible;
+        }
+      }
+    }
+
+    // .custom-radio__input:disabled:checked
+    &:disabled:checked {
+      ~ .custom-radio__item {
+        border-color: $color-iron;
+
+        // .custom-radio__item::before
+        &::before {
+          opacity: 0.2;
+          visibility: visible;
+        }
+      }
+
+      ~ .custom-radio__value {
+        color: $color-iron;
+      }
     }
   }
 }

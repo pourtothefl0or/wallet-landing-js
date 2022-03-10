@@ -25,7 +25,7 @@
     line-height: 17px;
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include minitablet(max) {
     display: none;
   }

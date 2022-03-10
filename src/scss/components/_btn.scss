@@ -45,7 +45,7 @@
       color: $color-governor-bay;
     }
 
-    // MEDIA
+    // --- MEDIA ---
     @include minitablet(max) {
       border: transparent;
       color: $color-white;
@@ -65,6 +65,7 @@
   &--arrow {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     column-gap: 5px;
 
     svg {
@@ -74,10 +75,10 @@
       transition: transform var(--primary-animation);
     }
 
-    // >>> .btn--arrow-active
-    &-active {
+    // >>> .btn--arrow active
+    &.active {
       svg {
-        transform: rotate(180deg);
+        transform: rotateX(180deg);
       }
     }
   }
@@ -98,8 +99,8 @@
     background: $color-cornflower-blue;
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include minitablet(max) {
-    padding: 10px 70px;
+    min-width: 244px;
   }
 }

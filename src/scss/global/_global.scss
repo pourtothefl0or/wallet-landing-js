@@ -31,8 +31,8 @@ nav {
     border-bottom: 1px solid transparent;
     transition: border-color var(--primary-animation);
 
-    // a:focus
-    // a:hover
+    // >>> a:focus
+    // >>> a:hover
     &:focus,
     &:hover {
       border-color: currentColor;
@@ -61,11 +61,6 @@ img {
   padding: 0 !important;
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
 }
 
 .scroll-disabled {

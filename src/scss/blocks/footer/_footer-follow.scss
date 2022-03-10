@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     row-gap: 5px;
 
-    // MEDIA
+    // --- MEDIA ---
     @include tablet(max) {
       justify-content: center;
     }
@@ -15,6 +15,7 @@
 
   // .footer-follow__item
   &__item {
+    // .footer-follow__item:not(:last-child)
     &:not(:last-child) {
       margin-right: 10px;
     }
@@ -49,6 +50,7 @@
     }
   }
 
+  // --- MEDIA ---
   @include tablet(min) {
     grid-area: follow;
     grid-column: 1 / 4;

@@ -9,13 +9,25 @@
   }
 
   // .contacts__title
+  &__title {
+    margin: 0 0 var(--primary-indent);
+  }
+
+  // .contacts__list
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px 20px;
+    padding: 15px 0 var(--primary-indent);
+  }
+
   // .contacts__descr
-  &__title,
   &__descr {
     margin: 0 0 var(--primary-indent);
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include tablet(min) {
     // .contacts__container
     &__container {
@@ -25,6 +37,7 @@
         ". title"
         "workers descr"
         "workers form";
+      align-items: start;
       column-gap: 104px;
     }
 
@@ -37,14 +50,27 @@
     &__descr {
       grid-area: descr;
     }
+
+    // .contacts__list
+    &__list {
+      grid-area: workers;
+    }
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include tablet(max) {
+    --size: 244px;
+
     // .contacts__container
     &__container {
       padding-top: 42px;
       padding-bottom: 15px;
+    }
+
+    // .contacts__list
+    &__list {
+      justify-content: center;
+      padding-top: 8px;
     }
   }
 }

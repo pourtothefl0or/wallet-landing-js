@@ -1,5 +1,5 @@
-// === LOCATION-LINK ===
-.location-link {
+// === LOCATION-POINT ===
+.location-point {
   display: grid;
   grid-template-columns: 20px 1fr;
   gap: 8px 6px;
@@ -9,22 +9,20 @@
   align-items: center;
   color: $color-dusty-gray;
 
-  // .location-link__icon
+  // .location-point__icon
   &__icon {
     grid-area: icon;
     width: 20px;
     height: 20px;
 
     svg {
-      width: 100%;
-      height: 100%;
+      @include image-cover(first);
       fill: currentColor;
-      object-fit: cover;
       transition: fill var(--primary-animation);
     }
   }
 
-  // .location-link__city
+  // .location-point__city
   &__city {
     grid-area: city;
     margin: 0;
@@ -32,7 +30,7 @@
     transition: color var(--primary-animation);
   }
 
-  // .location-link__address
+  // .location-point__address
   &__address {
     grid-area: address;
     margin: 0;
@@ -40,19 +38,19 @@
     color: currentColor;
   }
 
-  // >>> .location-link--active
-  // >>> .location-link:hover
-  // >>> .location-link:focus
-  &--active,
+  // >>> .location-point active
+  // >>> .location-point:hover
+  // >>> .location-point:focus
+  &.active,
   &:hover,
   &:focus {
-    .location-link__icon {
+    .location-point__icon {
       svg {
         fill: $color-governor-bay;
       }
     }
 
-    .location-link__city {
+    .location-point__city {
       color: $color-ebony-clay;
     }
   }

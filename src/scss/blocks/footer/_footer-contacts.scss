@@ -37,7 +37,7 @@
     }
   }
 
-  // MEDIA
+  // --- MEDIA ---
   @include tablet(min) {
     grid-area: contacts;
     grid-column: 3 span;

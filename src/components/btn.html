@@ -1,10 +1,9 @@
-<!-- === BUTTON === -->
 @@if (type === 'button' && view === '') {
-  <button class="btn" type="submit">@@text</button>
+  <button class="btn">@@text</button>
 }
 
 @@if (type === 'button' && view !== '' && view !== 'arrow') {
-  <button class="btn btn--@@view" type="submit">@@text</button>
+  <button class="btn btn--@@view">@@text</button>
 }
 
 @@if (type === 'button' && view === 'arrow') {
