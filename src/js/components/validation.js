@@ -12,7 +12,7 @@ const email = {
 
 const contactsPhone = contactsForm.querySelector('[name=phone]')
 const phone = {
-  'placeholder': '+44 (000) 000-0000',
+  'placeholder': '+44 (___) ___-____',
   'mask': '+44 (999) 999-9999',
   'hasError': true,
 }

@@ -91,7 +91,7 @@
             right: var(--padding);
             width: 24px;
             height: 24px;
-            background-image: url('../images/icons/custom-select-checked.svg');
+            background-image: url('../images/icons/select-checked.svg');
             @include image-cover(background);
             transform: translateY(-50%);
           }
@@ -120,7 +120,7 @@
           right: var(--padding);
           width: 24px;
           height: 24px;
-          background-image: url('../images/icons/custom-select-arrow.svg');
+          background-image: url('../images/icons/select-arrow.svg');
           transform: translateY(-50%);
           transition: transform var(--primary-animation);
         }
