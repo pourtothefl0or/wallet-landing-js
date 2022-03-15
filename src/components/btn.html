@@ -1,24 +1,20 @@
 @@if (type === 'button' && view === '') {
-  <button class="btn">@@text</button>
+<button class="btn">@@text</button>
 }
-
 @@if (type === 'button' && view !== '' && view !== 'arrow') {
-  <button class="btn btn--@@view">@@text</button>
+<button class="btn btn--@@view">@@text</button>
 }
-
 @@if (type === 'button' && view === 'arrow') {
-  <button class="btn btn--arrow">
-    @@text
-    <svg>
-      <use xlink:href="./images/sprite.svg#btn-arrow"></use>
-    </svg>
-  </button>
+<button class="btn btn--arrow">
+  @@text
+  <svg>
+    <use xlink:href="./images/sprite.svg#btn-arrow"></use>
+  </svg>
+</button>
 }
-
 @@if (type === 'link' && view === '') {
-  <a class="btn" href="#">@@text</a>
+<a class="btn" href="#">@@text</a>
 }
-
 @@if (type === 'link' && view !== '') {
-  <a class="btn btn--@@view" href="#">@@text</a>
+<a class="btn btn--@@view" href="#">@@text</a>
 }

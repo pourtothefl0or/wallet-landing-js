@@ -31,12 +31,12 @@
 
   // .coins__list
   &__list {
-    --coins-card: 245px;
+    --card-width: 245px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--coins-card), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
     align-items: center;
-    gap: 28px 15px;
+    gap: 23px 15px;
   }
 
   // .coins__item
@@ -46,7 +46,7 @@
       display: inline-block;
       border: 1px dashed $color-dusty-gray;
       border-radius: var(--secondary-radius);
-      padding: 7px 17px;
+      padding: 8px 16px;
       text-align: center;
       color: $color-ebony-clay;
       transition:
@@ -79,9 +79,9 @@
 
     // .coins__list
     &__list {
-      --coins-card: 200px;
+      --card-width: 200px;
 
-      gap: 5px;
+      gap: 13px 5px;
     }
   }
 
@@ -98,7 +98,7 @@
 
     // .coins__list
     &__list {
-      --coins-card: 175px;
+      --card-width: 175px;
 
       // .coins__list:not(.opened)
       &:not(.opened) {
@@ -113,7 +113,7 @@
   @include mobile(max) {
     // .coins__list
     &__list {
-      --coins-card: 160px;
+      --card-width: 150px;
     }
   }
 }

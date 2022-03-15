@@ -7,7 +7,12 @@
     "icon city"
     "address address";
   align-items: center;
+  border: 0;
+  padding: 0;
+  text-align: left;
   color: $color-dusty-gray;
+  background: transparent;
+  cursor: pointer;
 
   // .location-point__icon
   &__icon {
@@ -16,7 +21,7 @@
     height: 20px;
 
     svg {
-      @include image-cover(first);
+      @include image-cover(block);
       fill: currentColor;
       transition: fill var(--primary-animation);
     }

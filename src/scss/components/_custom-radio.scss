@@ -1,6 +1,6 @@
 // === CUSTOM-RADIO ===
 .custom-radio {
-  --size: 24px;
+  --radio-size: 24px;
 
   position: relative;
   display: inline-block;
@@ -14,8 +14,8 @@
     display: block;
     border: 1px solid $color-governor-bay;
     border-radius: 100%;
-    width: var(--size);
-    height: var(--size);
+    width: var(--radio-size);
+    height: var(--radio-size);
     transform: translateY(-50%);
     transition: border-color var(--primary-animation);
 
@@ -30,7 +30,7 @@
       height: 20px;
       transform: translate(-50%, -50%);
       background-image: url("../images/icons/radio-checked.svg");
-      @include image-cover(second);
+      @include image-cover(background);
       @include visibility(hidden);
       transition:
         opacity var(--primary-animation),

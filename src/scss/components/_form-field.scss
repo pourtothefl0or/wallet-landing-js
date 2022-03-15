@@ -1,7 +1,5 @@
 // === FORM-FIELD ===
 .form-field {
-  --min-height: 44px;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
@@ -13,17 +11,8 @@
   line-height: 19px;
 
   // .form-field > * (first-item)
-  & > * {
+  > * {
     grid-area: input;
-  }
-
-  // .form-field__row
-  &__row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 36px;
-    min-height: var(--min-height);
   }
 
   // .form-field__input
@@ -32,7 +21,7 @@
     border-radius: var(--primary-radius);
     padding: 10px 10px 10px 16px;
     width: 100%;
-    min-height: var(--min-height);
+    min-height: var(--form-field-height);
     background: $color-wild-sand;
     caret-color: $color-governor-bay;
     transition: border-color var(--primary-animation);
@@ -42,31 +31,10 @@
       color: $color-dusty-gray;
     }
 
-    // .form-field__input
-    .form-field--big & {
+    // .form-field__input--big
+    &--big {
       min-height: 98px;
       resize: vertical;
-    }
-
-    // form-field__input--drop
-    &--drop {
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      appearance: none;
-      color: $color-ebony-clay;
-      background-image: url("../images/icons/dropdown-arrow.svg");
-      background-size: 24px;
-      background-position: right 10px center;
-      background-repeat: no-repeat;
-
-      // ~ option[value=''] {
-      //   color: $color-dusty-gray;
-      // }
-
-      // >>> form-field__input--dropdown:disabled
-      &:disabled {
-        color: $color-iron;
-      }
     }
 
     // >>> .form-field__input:disabled::placeholder
@@ -136,59 +104,6 @@
       // .form-field__alert
       &__alert {
         display: block;
-      }
-    }
-
-    .custom-radio {
-      // .custom-radio__item
-      &__item {
-        border-color: $color-mandy;
-      }
-    }
-
-    .custom-checkbox {
-      // .custom-checkbox__item
-      &__item {
-        border-color: $color-mandy;
-      }
-    }
-  }
-
-  // .form-field[data-caption='undefined']
-  &[data-caption='undefined'] {
-    grid-template-areas: "input input";
-
-    .form-field__caption {
-      display: none;
-    }
-
-    // >>> .form-field[data-caption='undefined'] error
-    &.error {
-      grid-template-areas:
-      "input input"
-      "alert alert";
-    }
-  }
-
-  // .form-field[data-caption='invisible']
-  &[data-caption='invisible'] {
-    .form-field__caption {
-      @include visibility(hidden);
-    }
-
-    // --- MEDIA ---
-    @include tablet(max) {
-      grid-template-areas: "input input";
-
-      .form-field__caption {
-        display: none;
-      }
-
-      // >>> .form-field[data-caption='undefined'] error
-      &.error {
-        grid-template-areas:
-        "input input"
-        "alert alert";
       }
     }
   }

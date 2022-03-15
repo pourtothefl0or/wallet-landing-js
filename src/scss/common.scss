@@ -21,14 +21,61 @@
 @import './components/form-field';
 @import './components/custom-radio';
 @import './components/custom-checkbox';
+@import './components/custom-select';
 
 // === BLOCKS ===
-@import './blocks/header';
-@import './blocks/hero';
-@import './blocks/coins';
-@import './blocks/blog';
-@import './blocks/location';
-@import './blocks/contacts';
-@import './blocks/questions';
-@import './blocks/section';
-@import './blocks/footer';
+// --- header ---
+@import './blocks/header/header';
+@import './blocks/header/menu-btn';
+@import './blocks/header/menu';
+
+// --- hero ---
+@import './blocks/hero/hero';
+
+// --- apps ---
+@import './blocks/apps/apps';
+@import './blocks/apps/apps-rate';
+
+// --- coins ---
+@import './blocks/coins/coins';
+@import './blocks/coins/coins-card';
+
+// --- blog ---
+@import './blocks/blog/blog';
+
+// --- cards ---
+@import './blocks/card/card';
+@import './blocks/card/card-author';
+@import './blocks/card/card-pagi';
+
+// --- location ---
+@import './blocks/location/location';
+@import './blocks/location/location-point';
+
+// --- contacts ---
+@import './blocks/contacts/contacts';
+@import './blocks/contacts/contacts-form';
+
+// --- person ---
+@import './blocks/person/person';
+@import './blocks/person/person-social';
+
+// --- questions ---
+@import './blocks/questions/questions';
+
+// --- accordion
+@import './blocks/accordion/accordion';
+
+// --- offer ---
+@import './blocks/offer/offer';
+@import './blocks/offer/offer-crypto';
+
+// --- footer ---
+@import './blocks/footer/footer';
+@import './blocks/footer/footer-follow';
+@import './blocks/footer/footer-menu';
+@import './blocks/footer/footer-language';
+@import './blocks/footer/language';
+@import './blocks/footer/footer-support';
+@import './blocks/footer/footer-social';
+@import './blocks/footer/footer-contacts';

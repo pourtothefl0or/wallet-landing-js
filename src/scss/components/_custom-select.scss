@@ -1,0 +1,160 @@
+// === CUSTOM-SELECT ===
+.custom-select {
+  --padding: 10px;
+
+  position: relative;
+
+  // .custom-select__input
+  &__input {
+    display: none
+  }
+
+  // .custom-select__list
+  &__list {
+    // .custom-select__list[role='listbox']
+    &[role='listbox'] {
+      position: absolute;
+      top: auto;
+      left: 0;
+      z-index: 10;
+      margin-top: 4px;
+      border: 1px solid $color-iron;
+      border-radius: var(--primary-radius);
+      width: 100%;
+      background: $color-white;
+      @include visibility(hidden);
+      transition:
+        opacity var(--primary-animation),
+        visibility var(--primary-animation);
+    }
+
+    .custom-select__item {
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+      @include ff-IBMPlexSans;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: $color-ebony-clay;
+
+      // .custom-select__item::before
+      &::before {
+        content: '';
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 100%;
+        width: 14px;
+        height: 14px;
+        @include image-cover(background);
+      }
+
+      // .custom-select__item[data-value='russia']::before
+      &[data-value='russia']::before {
+        background-image: url('../images/flags/country/russia.png');
+      }
+
+      // .custom-select__item[data-value='ukraine']::before
+      &[data-value='ukraine']::before {
+        background-image: url('../images/flags/country/ukraine.png');
+      }
+
+      // .custom-select__item[data-value='united_states']::before
+      &[data-value='united_states']::before {
+        background-image: url('../images/flags/country/united_states.png');
+      }
+
+      // .custom-select__item[data-value='united_kingdom']::before
+      &[data-value='united_kingdom']::before {
+        background-image: url('../images/flags/country/united_kingdom.png');
+      }
+
+      // .custom-select__item--choice
+      &--choice {
+        position: relative;
+        padding: 6px 39px 6px 15px;
+
+        // >>> .custom-select__item--choice is-highlighted
+        &.is-highlighted {
+          background: $color-wild-sand;
+          cursor: pointer;
+        }
+
+        // >>> .custom-select__item--choice is-selected
+        &.is-selected {
+          color: $color-governor-bay;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: var(--padding);
+            width: 24px;
+            height: 24px;
+            background-image: url('../images/icons/custom-select-checked.svg');
+            @include image-cover(background);
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+
+    // .custom-select__list--single
+    &--single {
+      .custom-select__item {
+        position: relative;
+        border: 1px solid $color-iron;
+        border-radius: var(--primary-radius);
+        padding: var(--padding) var(--padding) var(--padding) 16px;
+        width: 100%;
+        min-height: var(--form-field-height);
+        text-align: left;
+        background: $color-wild-sand;
+        transition: border-color var(--primary-animation);
+
+        // .custom-select__item::after
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: var(--padding);
+          width: 24px;
+          height: 24px;
+          background-image: url('../images/icons/custom-select-arrow.svg');
+          transform: translateY(-50%);
+          transition: transform var(--primary-animation);
+        }
+
+        // >>> is-disabled .custom-select__item
+        .custom-select.is-disabled & {
+          border-color: $color-iron;
+          color: $color-iron;
+
+          // .custom-select__item::before
+          &::before {
+            filter: grayscale(100%);
+          }
+        }
+
+        // >>> is-disabled .custom-select__item
+        // >>> :hover .custom-select__item
+        .custom-select:not(.is-disabled).is-focused &,
+        .custom-select:not(.is-disabled):hover &{
+          border-color: $color-governor-bay;
+        }
+
+        // >>> is-open .custom-select__item::after
+        .custom-select.is-open &::after {
+          transform: translateY(-50%) rotateX(180deg);
+        }
+      }
+    }
+  }
+
+  // >>> .custom-select is-open
+  &.is-open {
+    .custom-select__list[role='listbox'] {
+      @include visibility(visible);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+// === OFFER-CRYPTO ===
+.offer-crypto {
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--secondary-radius);
+  padding: 60px 60px 78px;
+  background-color: $color-ebony-clay;
+
+  // .offer-crypto__image
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translateY(-43%);
+  }
+
+  // .offer-crypto__content
+  &__content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 485px;
+  }
+
+  // .offer-crypto__title
+  &__title {
+    margin: 0 0 var(--primary-indent);
+    color: $color-white;
+  }
+
+  // .offer-crypto__descr
+  &__descr {
+    margin: 0 0 var(--primary-indent);
+    color: $color-white;
+  }
+
+  // --- MEDIA ---
+  @include tablet(max) {
+    padding: 24px 23px 26px;
+  }
+
+  // --- MEDIA ---
+  @include minitablet(max) {
+    border-radius: 0;
+
+    // .offer-crypto__image
+    &__image {
+      max-width: 443px;
+      left: auto;
+      right: -22%;
+      transform: translateY(-38%);
+    }
+  }
+
+  // --- MEDIA ---
+  @include mobile(max) {
+    // .offer-crypto__image
+    &__image {
+      left: auto;
+      right: -22%;
+      transform: translateY(-38%);
+    }
+
+    // .offer-crypto__content
+    &__content {
+      max-width: 100%;
+    }
+
+    // .offer-crypto__descr
+    &__descr {
+      margin-bottom: 180px;
+    }
+
+    .btn {
+      align-self: center;
+    }
+  }
+}

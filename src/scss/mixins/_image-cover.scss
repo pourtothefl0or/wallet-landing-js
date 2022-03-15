@@ -1,10 +1,10 @@
 // === IMAGE-COVER ===
 @mixin image-cover($set) {
-  @if $set == first {
+  @if $set == block {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  } @else if $set == second {
+  } @else if $set == background {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

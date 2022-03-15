@@ -1,19 +1,19 @@
 // === COINS-CARD ===
 .coins-card {
-  --coins-card-image: 30px;
+  --image-size: 30px;
 
   display: grid;
-  grid-template-columns: var(--coins-card-image) auto 1fr;
+  grid-template-columns: var(--image-size) auto 1fr;
   align-items: center;
   gap: 8px;
   border-radius: var(--secondary-radius);
-  padding: 10px 5px;
+  padding: 12px 15px;
   transition: background-color var(--primary-animation);
 
   // .coins-card__image
   &__image {
-    width: var(--coins-card-image);
-    height: var(--coins-card-image);
+    width: var(--image-size);
+    height: var(--image-size);
     object-fit: cover;
   }
 
@@ -47,13 +47,14 @@
 
   // --- MEDIA ---
   @include tablet(max) {
-    --coins-card-image: 40px;
+    --image-size: 40px;
 
-    grid-template-columns: var(--coins-card-image) 1fr;
+    grid-template-columns: var(--image-size) 1fr;
     grid-template-areas:
       "image abbr"
       "image name";
     row-gap: 0;
+    padding: 6px 8px;
 
     // .coins-card__image
     &__image {

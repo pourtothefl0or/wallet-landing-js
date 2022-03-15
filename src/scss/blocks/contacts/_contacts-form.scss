@@ -11,9 +11,19 @@
     gap: 20px 0;
     margin-bottom: 13px;
 
+    // next first item in block
     > * {
       grid-column: 2 span;
     }
+  }
+
+  // .contacts-form__row
+  &__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 36px;
+    min-height: var(--form-field-height);
   }
 
   .btn {
@@ -35,9 +45,10 @@
       grid-column: 1;
     }
 
-    // .contacts-form__gender
-    &__gender {
+    // .contacts-form__row
+    &__row {
       grid-column: 2;
+      margin-top: 29px;
     }
 
     .btn {

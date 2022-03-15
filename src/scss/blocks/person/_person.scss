@@ -1,0 +1,129 @@
+// === PERSON ===
+.person {
+  --person-size: 216px;
+
+  position: relative;
+  display: inline-block;
+
+  // .person__image
+  &__image {
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    border-radius: var(--secondary-radius);
+    padding: 16px;
+    width: var(--person-size);
+    height: var(--person-size);
+    background-color: $color-white;
+
+    img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      @include image-cover(block);
+    }
+
+    .person-social {
+      @include visibility(hidden);
+    }
+
+    // .person__image:hover
+    &:hover {
+      .person-social {
+        @include visibility(visible);
+      }
+    }
+  }
+
+  // .person__info
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-radius: var(--secondary-radius);
+    box-shadow: 0 2px 7px rgba(56, 57, 77, 0.1);
+    padding: 32px;
+    width: var(--person-size);
+    height: var(--person-size);
+    background-color: $color-white;
+
+    // .person__info-name
+    &-name {
+      margin: 0 0 6px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+      color: $color-ebony-clay;
+    }
+
+    // .person__info-position
+    &-position {
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: $color-dusty-gray;
+    }
+  }
+
+  // Card positioning
+  // .person:nth-of-type(even)
+  &:nth-of-type(odd) {
+    .person {
+      // .person__image
+      &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      // .person__info
+      &__info {
+        margin: 104px 0 0 64px;
+      }
+    }
+  }
+
+  // .person:nth-of-type(even)
+  &:nth-of-type(even) {
+    .person {
+      &__image {
+        margin: 104px 0 0 64px;
+      }
+
+      // .person__info
+      &__info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        justify-content: start;
+      }
+    }
+  }
+
+  // --- MEDIA ---
+  @include tablet(max) {
+    --person-size: 244px;
+
+    // Card positioning
+    // .person:nth-of-type(odd)
+    &:nth-of-type(odd) {
+      .person__info {
+        margin: 130px 0 0 50px;
+      }
+    }
+
+    // .person:nth-of-type(even)
+    &:nth-of-type(even) {
+      .person__image {
+        margin: 130px 0 0 50px;
+      }
+    }
+  }
+}
+

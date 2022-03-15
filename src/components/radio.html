@@ -1,5 +1,10 @@
 <label class="custom-radio">
+  @@if (checked === true) {
+  <input class="custom-radio__input visually-hidden" type="radio" name="@@name" value="@@value" checked>
+  }
+  @@if (checked === false) {
   <input class="custom-radio__input visually-hidden" type="radio" name="@@name" value="@@value">
+  }
   <span class="custom-radio__item"></span>
-  <span class="custom-radio__value">@@value</span>
+  <span class="custom-radio__value">@@title</span>
 </label>

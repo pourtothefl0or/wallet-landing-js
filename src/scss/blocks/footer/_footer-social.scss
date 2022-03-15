@@ -9,7 +9,7 @@
     height: 48px;
 
     img {
-      @include image-cover(first);
+      @include image-cover(block);
     }
   }
 

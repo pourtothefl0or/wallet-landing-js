@@ -1,10 +1,10 @@
 // === VISIBILITY ===
-@mixin visibility($state) {
-  @if $state == hidden {
-    opacity: 0;
-    visibility: hidden;
-  } @else if $state == visible {
+@mixin visibility($set) {
+  @if $set == visible {
     opacity: 1;
     visibility: visible;
+  } @else if $set == hidden {
+    opacity: 0;
+    visibility: hidden;
   }
 }

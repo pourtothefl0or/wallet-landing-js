@@ -5,7 +5,7 @@
   height: 40px;
 
   &__image {
-    @include image-cover(first);
+    @include image-cover(block);
   }
 
   @include minitablet(max) {

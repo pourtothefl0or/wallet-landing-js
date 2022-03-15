@@ -12,6 +12,7 @@ function initSwiper() {
     direction: 'horizontal',
     slidesPerView: 1,
     spaceBetween: 30,
+    keyboard: { enabled: true },
     pagination: {
       el: '.blog-slider__pagi',
       type: 'bullets',
@@ -27,9 +28,9 @@ function initSwiper() {
 }
 
 function watchBreakpoint() {
-  if (breakpoint.matches === true) {
+  if (breakpoint.matches) {
     if (blogSwiper !== undefined) blogSwiper.destroy(true, true)
-  } else if (breakpoint.matches === false) {
+  } else {
     initSwiper()
   }
 }

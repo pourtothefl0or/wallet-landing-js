@@ -57,77 +57,51 @@
     <form class="contacts-form" action="#">
       <div class="contacts-form__items">
         @@include('../../components/input.html', {
-          'class': 'contacts-form__email',
           'title': 'Email',
-          'type': 'email',
+          'type': 'text',
           'name': 'email',
           'placeholder': 'nick@example.com'
         })
 
         @@include('../../components/input.html', {
-          'class': 'contacts-form__phone',
           'title': 'Phone',
           'type': 'tel',
           'name': 'phone',
-          "placeholder": "+44 (000) 000-0000"
+          'placeholder': '+44 (000) 000-0000'
         })
 
         @@include('../../components/select.html', {
           'class': 'contacts-form__country',
-          'title': 'Country',
           'name': 'country',
-          'options': {
-            '1': {
-              'name': 'united_kingdom',
-              'text': 'United Kingdom',
-            },
-            '2': {
-              'name': 'united_states',
-              'text': 'United States',
-            },
-            '3': {
-              'name': 'russia',
-              'text': 'Russia',
-            },
-            '4': {
-              'name': 'ukraine',
-              'text': 'Ukraine',
-            },
-          }
+          'title': 'Country',
         })
 
-        <div class="contacts-form__gender form-field" data-caption="invisible">
-          <div class="form-field__row">
-            @@include('../../components/radio.html', {
-              'name': 'gender',
-              'value': 'Man'
-            })
-
-            @@include('../../components/radio.html', {
-              'name': 'gender',
-              'value': 'Woman'
-            })
-          </div>
-          <span class="form-field__caption">Gender</span>
-          <span class="form-field__alert"></span>
+        <div class="contacts-form__row">
+          @@include('../../components/radio.html', {
+            'name': 'gender',
+            'value': 'man',
+            'title': 'Man',
+            'checked': true,
+          })
+          @@include('../../components/radio.html', {
+            'name': 'gender',
+            'value': 'woman',
+            'title': 'Woman',
+            'checked': false,
+          })
         </div>
 
         @@include('../../components/textarea.html', {
-          'class': 'contacts-form__message',
           'title': 'Message',
           'name': 'message',
           'placeholder': 'Enter your message here'
         })
       </div>
-
-      <div class="contacts-form__politics form-field" data-caption="undefined">
-        @@include('../../components/checkbox.html', {
-          'name': 'politics',
-          'value': 'By clicking on the button, you consent to the processing <a href="#">of data processing</a> and compiled with <a href="#">confidentiality documents</a>'
-        })
-        <span class="form-field__caption">Politics</span>
-        <span class="form-field__alert"></span>
-      </div>
+      @@include('../../components/checkbox.html', {
+        'name': 'politics',
+        'value': 'By clicking on the button, you consent to the processing <a href="#">of data processing</a> and compiled with <a href="#">confidentiality documents</a>',
+        'checked': false,
+      })
 
       @@include('../../components/btn.html', {
         'type': 'button',

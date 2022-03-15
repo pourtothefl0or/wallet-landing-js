@@ -1,153 +1,156 @@
 // === VALIDATION ===
-import IMask from 'imask'
+import inputmask from "inputmask"
 
 const contactsForm = document.querySelector('.contacts-form')
-const contactsEmail = document.querySelector('.contacts-form__email')
-const contactsPhone = document.querySelector('.contacts-form__phone')
-const contactsCountry = document.querySelector('.contacts-form__country')
-const contactsGender = document.querySelector('.contacts-form__gender')
-const contactsMessage = document.querySelector('.contacts-form__message')
-const contactsPolitics = document.querySelector('.contacts-form__politics')
+
+const contactsEmail = contactsForm.querySelector('[name=email]')
+const email = {
+  'placeholder': 'nick@example.com',
+  'mask': '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]',
+  'hasError': true,
+}
+
+const contactsPhone = contactsForm.querySelector('[name=phone]')
+const phone = {
+  'placeholder': '+44 (000) 000-0000',
+  'mask': '+44 (999) 999-9999',
+  'hasError': true,
+}
+
+const contactsMessage = contactsForm.querySelector('[name=message]')
+const message = {
+  'limit': 5,
+  'hasError': true,
+}
+
+const contactsPolitics = contactsForm.querySelector('[name=politics]')
+const politics = {
+  'hasError': true,
+}
+
+const btn = contactsForm.lastElementChild // .contacts-form .btn
+btn.disabled = true
+
+const fieldError = 'error' // .form-field error
 const fieldAlert = '.form-field__alert'
 const fieldScore = '.form-field__score'
 
-const inputs = {
-  email: {
-    name: 'input[name=email]',
-  },
-  phone: {
-    name: 'input[name=phone]',
-  },
-  country: {
-    name: 'select[name=country]',
-  },
-  gender: {
-    name: 'input[name=gender]',
-  },
-  message: {
-    name: 'textarea[name=message]',
-  },
-  politics: {
-    name: 'input[name=politics]',
-  },
-}
+// --- masks ---
+Inputmask({
+  'mask': email.mask,
+  'placeholder': email.placeholder,
+}).mask(contactsEmail)
 
+Inputmask({
+  'mask': phone.mask,
+  'placeholder': phone.placeholder,
+}).mask(contactsPhone)
+
+// --- alerts ---
 const alert = {
-  field: 'Заполните поле ввода',
+  blank: 'Заполните поле',
   element: 'Выберите элемент',
-  email: 'Проверьте правильность заполнения почты',
-  phone: 'Проверьте правильность заполнения телефона',
-  textarea: 'Привышен лимит символов'
+  limit: 'Привышен лимит количества символов',
 }
 
-contactsForm.addEventListener('submit', (event) => {
-  event.preventDefault()
+// --- inputs ---
+const inputStates = ['blur', 'input']
+inputStates.forEach((states) => {
+  // --- blank ---
+  contactsEmail.addEventListener(states, () => {
+    if (validateBlank(contactsEmail.value)) {
+      isAlert(contactsEmail, alert.blank)
+      email.hasError = true
+    } else {
+      isSuccess(contactsEmail)
+      email.hasError = false
+    }
+  })
 
-  validateField(contactsEmail, inputs.email, alert.field)
-  validateField(contactsPhone, inputs.phone, alert.field)
-  validateField(contactsMessage, inputs.message, alert.field)
-  validateField(contactsCountry, inputs.country, alert.element)
-  validateElem(contactsGender, inputs.gender, alert.element)
-  validateElem(contactsPolitics, inputs.politics, alert.element)
+  contactsPhone.addEventListener(states, () => {
+    if (validateBlank(contactsPhone.value)) {
+      isAlert(contactsPhone, alert.blank)
+      phone.hasError = true
+    } else {
+      isSuccess(contactsPhone)
+      phone.hasError = false
+    }
+  })
+
+  contactsMessage.addEventListener(states, () => {
+    if (validateBlank(contactsMessage.value)) {
+      isAlert(contactsMessage, alert.blank)
+      message.hasError = true
+    } else {
+      isSuccess(contactsMessage)
+      message.hasError = false
+    }
+  })
+
+  // --- limit ---
+  contactsMessage.addEventListener(states, () => {
+    addLimitCounter(contactsMessage, message.limit)
+
+    if (contactsMessage.value.length !== 0) {
+      if (validateLimit(contactsMessage.value, message.limit)) {
+        isAlert(contactsMessage, alert.limit)
+        message.hasError = true
+      } else {
+        isSuccess(contactsMessage)
+        message.hasError = false
+      }
+    }
+  })
 })
 
-validateEmail(contactsEmail, inputs.email, alert.email)
-validatePhone(contactsPhone, inputs.phone, alert.phone)
-phoneMask(contactsPhone, inputs.phone)
-symbolsLimit(contactsMessage, inputs.message, 5, alert.textarea) // UI Kit limit: 140
+// --- checkbox ---
+const checkboxStates = ['load', 'change', 'blur']
+checkboxStates.forEach((states) => {
+  contactsPolitics.addEventListener(states, () => {
+    !contactsPolitics.checked ? politics.hasError = true : politics.hasError = false
+  })
+})
 
-// --- functions ---
-function isError(el, input, error) {
-  el.classList.add('error')
-  el.querySelector(fieldAlert).textContent = error
-  return input.status = 'error'
-}
 
-function noError(el, input) {
-  el.classList.remove('error')
-  el.querySelector(fieldAlert).textContent = ''
-  return input.status = ''
-}
-
-function validateField(el, input, error) {
-  if (el.querySelector(input.name).disabled === false) {
-    if (el.querySelector(input.name).value === '') {
-      isError(el, input, error)
+// --- form ---
+const formStates = ['input', 'change']
+formStates.forEach((states) => {
+  contactsForm.addEventListener(states, () => {
+    if (email.hasError || phone.hasError || message.hasError || politics.hasError) {
+      btn.disabled = true
     } else {
-      noError(el, input)
+      btn.disabled = false
     }
-  }
-}
 
-function validateElem(el, input, error) {
-  if (el.querySelector(input.name).disabled === false) {
-    if (el.querySelector(input.name).checked === false) {
-      isError(el, input, error)
-    } else {
-      noError(el, input)
-    }
-  }
-}
-
-function validateEmail(el, input, error) {
-  const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-
-  el.addEventListener('input', () => {
-    if (el.querySelector(input.name).disabled === false && el.querySelector(input.name).value !== '') {
-      if (!el.querySelector(input.name).value.match(regEx)) {
-        isError(el, input, error)
-      } else {
-        noError(el, input)
-      }
-    }
+    // console.log('email', email.hasError)
+    // console.log('phone', phone.hasError)
+    // console.log('message', message.hasError)
+    // console.log('politics', politics.hasError)
+    // console.log('--- --- ---')
   })
+})
+
+// --- states ---
+function isAlert(el, alert) {
+  el.parentElement.classList.add(fieldError)
+  el.parentElement.querySelector(fieldAlert).innerText = alert
 }
 
-function validatePhone(el, input, error) {
-  const regEx = /[^+\d]/g
-
-  el.addEventListener('input', () => {
-    if (el.querySelector(input.name).disabled === false && el.querySelector(input.name).value !== '') {
-      if (el.querySelector(input.name).value.replace(regEx, '').length !== 13) {
-        isError(el, input, error)
-      } else {
-        noError(el, input)
-      }
-    }
-  })
+function isSuccess(el) {
+  el.parentElement.classList.remove(fieldError)
+  el.parentElement.querySelector(fieldAlert).innerText = ''
 }
 
-function phoneMask(el, input) {
-  el.addEventListener('input', () => {
-    const element = el.querySelector(input.name)
-    const options = { mask: '+{44} (000) 000-0000' }
-
-    IMask(element, options)
-  })
+// --- validate ---
+function validateBlank(el) {
+  return el.length === 0 ? true : false
 }
 
-function symbolsLimit(el, input, limit = 140, error) {
-  el.addEventListener('input', () => {
-    const textarea = el.querySelector(input.name)
-    const textareaSymbols = textarea.value.length
-    const symbolsTable = el.querySelector(fieldScore)
+function validateLimit(el, limit) {
+  return el.length > limit ? true : false
+}
 
-    const colorMandy = '#e35450' // _variables.scss: $color-mandy
-    const colorIron = '#e1e1e4' // _variables.scss: $color-iron
-    const colorEbonyClay = '#25253e' // _variables.scss: $color-ebony-clay
-
-    symbolsTable.textContent = `${textareaSymbols} / ${limit}`
-
-    if (textareaSymbols > limit) {
-      textarea.style.borderColor = colorMandy
-      symbolsTable.style.color = colorMandy
-
-      isError(el, input, error)
-    } else {
-      textarea.style.borderColor = colorIron
-      symbolsTable.style.color = colorEbonyClay
-
-      noError(el, input)
-    }
-  })
+// --- add ---
+function addLimitCounter(el, limit) {
+  el.parentElement.querySelector(fieldScore).innerText = `${el.value.length} / ${limit}`
 }
